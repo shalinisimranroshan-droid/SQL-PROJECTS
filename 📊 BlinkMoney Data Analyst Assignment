@@ -1,0 +1,95 @@
+Overview
+
+This repository contains my submission for the BlinkMoney Data Analyst Assignment. The assignment focuses on product analytics, event instrumentation, SQL-based funnel analysis, and defining meaningful business metrics for the BlinkMoney Save (SIP) journey.
+
+The objective was to analyze the customer journey from App Open to First Unit Credited, identify user drop-offs, calculate key performance metrics, and design an analytics framework that supports data-driven decision-making.
+
+Assignment Components
+Part A – Event Specification
+
+Designed an analytics event tracking framework for the complete Save journey.
+
+The event specification includes:
+
+Event Name
+Trigger
+Event Properties
+Business Question Answered
+Drop-off Interpretation
+Suggested Product Improvement
+
+The design also considers asynchronous events such as:
+
+PAN Verification
+Bank Verification
+Mandate Completion
+First Unit Credited
+Part B – Product Hypothesis
+
+Developed a hypothesis identifying the stage most likely to lose users during the onboarding journey.
+
+The hypothesis includes:
+
+Reasoning behind the assumption
+Business impact
+Evidence required to validate or reject the hypothesis
+Part C – North Star Metric
+
+Selected a North Star Metric that reflects long-term customer value.
+
+North Star Metric
+
+Day-30 Active SIPs
+
+Counter Metric
+
+60-Day SIP Pause/Cancellation Rate
+
+The purpose of these metrics is to encourage sustainable customer engagement rather than optimizing only for initial registrations.
+
+Part D – SQL Analysis
+
+PostgreSQL was used to perform SQL analysis on the provided event schema.
+
+The SQL queries include:
+
+Step-by-step Save Journey Funnel
+Stage-wise User Count
+Step-over-Step Conversion
+Median Completion Time
+Largest Funnel Drop-off
+Database Schema
+Column	Data Type
+event_id	TEXT
+user_id	TEXT
+event_name	TEXT
+event_ts	TIMESTAMP
+properties	JSONB
+SQL Concepts Used
+SELECT
+WHERE
+GROUP BY
+COUNT()
+COUNT(DISTINCT)
+CASE Statements
+Common Table Expressions (CTEs)
+Window Functions (LAG)
+JOINS
+Aggregate Functions
+PostgreSQL
+Key Insights
+Built a complete user funnel for the Save journey.
+Calculated stage-wise user conversion.
+Identified the largest drop-off point in the onboarding process.
+Measured the median completion time between the first and final stages.
+Documented assumptions required due to limited dataset availability.
+Assumptions
+
+The SQL analysis was developed based on the following assumptions:
+
+Every event record represents a valid user action.
+Event timestamps are accurate and stored in chronological order.
+Users follow the intended funnel sequence.
+Duplicate events are handled using COUNT(DISTINCT user_id).
+Only users completing both the first and final stages are included in completion-time analysis.
+The provided dataset is complete and contains no missing event records.
